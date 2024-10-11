@@ -3,7 +3,7 @@ from isofit.core import isofit
 from isofit.core.forward import ForwardModel
 from isofit.inversion.inverse import Inversion
 
-config = configs.create_new_config(config_file="/mnt/data/20230401_ASO/L2A_reflectance/config/asovnir20230401t163434_isofit.json")
+config = configs.create_new_config(config_file="/mnt/data/20230401_ASO/VNIR/L2A_reflectance/config/asovnir20230401t163434_isofit.json")
 fm = ForwardModel(config)
 inv = Inversion(config, fm)
 workers = isofit.Worker(config, fm, loglevel="INFO", logfile=None)
