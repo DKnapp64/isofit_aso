@@ -31,7 +31,7 @@ from spectral.io import envi
 from isofit import ray
 from isofit.configs import configs
 from isofit.core.common import envi_header, load_spectrum
-from isofit.core.fileio import write_bil_chunk
+from isofit.core.fileio import IO, write_bil_chunk
 from isofit.core.forward import ForwardModel
 from isofit.core.geometry import Geometry
 from isofit.inversion.inverse import Inversion
@@ -310,7 +310,7 @@ class Worker(object):
                 if np.all(meas < 0):
                     continue
                 x_RT = rt_state[r, c, self.fm.idx_RT - len(self.fm.idx_surface)]
-                geom = Geometry(obs=obs[r, c, :], loc=loc[r, c, :])
+                geom = Geometry(obs=obs[r, c, :], loc=loc[r, c, :], esd=esd)
 
                 states, unc = invert_analytical(
                     self.iv.fm,
